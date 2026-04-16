@@ -1,0 +1,560 @@
+<!-- Created by Tajammal Hussain -->
+<!-- Author : Tajammal Hussain -->
+<!-- Thanks For Using My Bot -->
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber 𝐡𝐚𝐬𝐡𝐮 - Secure Panel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Inter',sans-serif;
+    background:#000;
+    min-height:100vh;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND IMAGE */
+body::before{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image: url('https://www.image2url.com/r2/default/images/1776309543013-91539943-9e8b-4877-8f8a-ee122c4f57ec.jpeg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    filter:blur(8px) brightness(0.3);
+    z-index:-2;
+}
+body::after{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg, rgba(37,211,102,0.1), rgba(0,0,0,0.8));
+    z-index:-1;
+}
+
+/* LOGIN SCREEN */
+.login-screen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+.login-box{
+    width:100%;
+    max-width:420px;
+    background:rgba(10,10,10,0.85);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:20px;
+    padding:45px 35px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    animation:fadeIn 0.5s ease;
+}
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
+}
+.login-header{text-align:center;margin-bottom:35px}
+.lock-icon{
+    width:70px;
+    height:70px;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 20px;
+    font-size:2rem;
+    box-shadow:0 10px 30px rgba(37,211,102,0.4);
+}
+.login-header h1{font-size:1.5rem;margin-bottom:8px}
+.login-header p{color:#999;font-size:0.9rem}
+.input-group{margin-bottom:20px;position:relative}
+.input-group i{
+    position:absolute;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#555;
+    font-size:1rem;
+}
+.input-group input{
+    width:100%;
+    padding:15px 18px 15px 45px;
+    background:rgba(0,0,0,0.5);
+    border:2px solid rgba(255,255,255,0.1);
+    border-radius:12px;
+    color:#fff;
+    font-size:0.95rem;
+    outline:none;
+    transition:0.3s;
+}
+.input-group input:focus{
+    border-color:#25d366;
+    box-shadow:0 0 0 4px rgba(37,211,102,0.1);
+    background:rgba(0,0,0,0.7);
+}
+.login-btn{
+    width:100%;
+    padding:15px;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    color:#000;
+    border:none;
+    border-radius:12px;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:10px;
+}
+.login-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,0.4)}
+.error-msg{
+    background:rgba(255,85,85,0.1);
+    border:1px solid #ff5555;
+    color:#ff5555;
+    padding:12px;
+    border-radius:10px;
+    font-size:0.85rem;
+    margin-top:15px;
+    display:none;
+    text-align:center;
+}
+.error-msg.show{display:block;animation:shake 0.4s}
+@keyframes shake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-10px)}
+    75%{transform:translateX(10px)}
+}
+
+/* MAIN WEBSITE */
+.main-site{
+    display:none;
+    min-height:100vh;
+    animation:fadeIn 0.5s ease;
+}
+.main-site.show{display:block}
+.navbar{
+    background:rgba(10,10,10,0.85);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+.nav-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:700;
+    font-size:1.1rem;
+}
+.nav-brand i{color:#25d366;font-size:1.5rem}
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.music-btn{
+    width:40px;
+    height:40px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.3s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.music-btn:hover{
+    background:#25d366;
+    color:#000;
+    border-color:#25d366;
+}
+.music-btn.muted{
+    background:rgba(255,85,85,0.2);
+    color:#ff5555;
+    border-color:#ff5555;
+}
+.logout-btn{
+    padding:10px 20px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:0.9rem;
+    transition:0.3s;
+}
+.logout-btn:hover{background:#ff5555;border-color:#ff5555;color:#000}
+.content{
+    max-width:800px;
+    margin:0 auto;
+    padding:60px 30px;
+}
+.welcome{
+    text-align:center;
+    margin-bottom:50px;
+}
+.welcome h2{font-size:2.2rem;margin-bottom:12px;text-shadow:0 2px 10px rgba(0,0,0,0.5)}
+.welcome h2 span{color:#25d366}
+.welcome p{color:#999;font-size:1rem}
+
+/* REPORT SECTION */
+.report-panel{
+    background:rgba(10,10,10,0.85);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:35px;
+}
+.panel-title{
+    font-size:1.3rem;
+    margin-bottom:25px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.panel-title i{color:#25d366}
+.form-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:12px;
+    margin-bottom:20px;
+}
+.form-row input{
+    padding:14px 18px;
+    background:rgba(0,0,0,0.5);
+    border:2px solid rgba(255,255,255,0.1);
+    border-radius:12px;
+    color:#fff;
+    font-size:0.95rem;
+    outline:none;
+    transition:0.3s;
+}
+.form-row input:focus{border-color:#25d366;background:rgba(0,0,0,0.7)}
+.send-btn{
+    padding:14px 28px;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    color:#000;
+    border:none;
+    border-radius:12px;
+    font-size:0.95rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+    white-space:nowrap;
+}
+.send-btn:hover{transform:translateY(-2px)}
+.send-btn:disabled{background:rgba(255,255,255,0.1);color:#444;cursor:not-allowed;transform:none}
+.terminal{
+    background:rgba(0,0,0,0.7);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:14px;
+    overflow:hidden;
+    margin-top:25px;
+    display:none;
+}
+.terminal.show{display:block;animation:slideUp 0.4s ease}
+@keyframes slideUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+.term-header{
+    background:rgba(10,10,10,0.9);
+    padding:12px 18px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.term-header-left{display:flex;align-items:center;gap:8px}
+.dots{display:flex;gap:6px}
+.dot{width:12px;height:12px;border-radius:50%}
+.dot.red{background:#ff5f56}
+.dot.yellow{background:#ffbd2e}
+.dot.green{background:#27c93f}
+.term-title{color:#666;font-size:0.8rem;margin-left:10px;font-family:'JetBrains Mono',monospace}
+.status-badge{
+    padding:4px 10px;
+    background:#25d366;
+    color:#000;
+    border-radius:6px;
+    font-size:0.7rem;
+    font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+}
+.status-badge.running{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.term-body{
+    padding:20px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.82rem;
+    line-height:1.9;
+    max-height:300px;
+    overflow-y:auto;
+}
+.term-body::-webkit-scrollbar{width:8px}
+.term-body::-webkit-scrollbar-track{background:rgba(10,10,10,0.5)}
+.term-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2);border-radius:4px}
+.log-line{
+    margin-bottom:3px;
+    opacity:0;
+    animation:fadeInLine 0.2s forwards;
+}
+@keyframes fadeInLine{to{opacity:1}}
+.log-time{color:#555;margin-right:12px}
+.log-success{color:#50fa7b}
+.log-info{color:#8be9fd}
+.log-warn{color:#f1fa8c}
+.log-error{color:#ff5555}
+.log-normal{color:#ccc}
+</style>
+</head>
+<body>
+
+<!-- AUDIO ELEMENT -->
+<audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=cyberpunk-120x240-12294.mp3" type="audio/mpeg">
+</audio>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+    <div class="login-box">
+        <div class="login-header">
+            <div class="lock-icon"><i class="fas fa-lock"></i></div>
+            <h1>Secure Login</h1>
+            <p>Enter credentials to continue</p>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="username" placeholder="Username" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <i class="fas fa-key"></i>
+            <input type="password" id="password" placeholder="Password" autocomplete="off">
+        </div>
+        <button class="login-btn" onclick="checkLogin()">
+            <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+        <div class="error-msg" id="errorMsg">
+            <i class="fas fa-exclamation-circle"></i> Invalid username or password
+        </div>
+    </div>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div class="main-site" id="mainSite">
+    <div class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-shield-alt"></i>
+            <span>MR HASHUU</span>
+        </div>
+        <div class="nav-actions">
+            <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">
+                <i class="fas fa-volume-up" id="musicIcon"></i>
+            </button>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="welcome">
+            <h2>Welcome, <span>ᴍʀ ʜᴀꜱʜᴜᴜ</span></h2>
+            <p>REPORT SENDING PANEL READY</p>
+        </div>
+
+        <div class="report-panel">
+            <div class="panel-title">
+                <i class="fas fa-paper-plane"></i>
+                <span>𝐖𝐡𝐚𝐭𝐬𝐚𝐩𝐩 𝐑𝐞𝐩𝐨𝐫𝐭</span>
+            </div>
+
+            <div class="form-row">
+                <input type="tel" id="waNumber" placeholder="+94771234567" maxlength="12">
+                <button class="send-btn" id="sendBtn" onclick="sendReport()">
+                    <i class="fas fa-rocket"></i> Send Report
+                </button>
+            </div>
+
+            <div class="terminal" id="terminal">
+                <div class="term-header">
+                    <div class="term-header-left">
+                        <div class="dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="term-title">report.log</div>
+                    </div>
+                    <div class="status-badge running" id="statusBadge">RUNNING</div>
+                </div>
+                <div class="term-body" id="termBody"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const USER = 'MR HASHUU';
+const PASS = 'HASHUTECH';
+let sending = false;
+let musicPlaying = false;
+
+function toggleMusic(){
+    const music = document.getElementById('bgMusic');
+    const icon = document.getElementById('musicIcon');
+    const btn = document.getElementById('musicBtn');
+    
+    if(musicPlaying){
+        music.pause();
+        icon.className = 'fas fa-volume-mute';
+        btn.classList.add('muted');
+        musicPlaying = false;
+    }else{
+        music.volume = 0.3;
+        music.play();
+        icon.className = 'fas fa-volume-up';
+        btn.classList.remove('muted');
+        musicPlaying = true;
+    }
+}
+
+function checkLogin(){
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value.trim();
+    const errorMsg = document.getElementById('errorMsg');
+
+    if(u === USER && p === PASS){
+        errorMsg.classList.remove('show');
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('mainSite').classList.add('show');
+        sessionStorage.setItem('loggedIn', 'true');
+        
+        // Auto play music on login
+        if(!musicPlaying){
+            setTimeout(()=>toggleMusic(), 500);
+        }
+    }else{
+        errorMsg.classList.add('show');
+        document.getElementById('password').value = '';
+        setTimeout(()=>errorMsg.classList.remove('show'), 3000);
+    }
+}
+
+function logout(){
+    sessionStorage.removeItem('loggedIn');
+    document.getElementById('mainSite').classList.remove('show');
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('waNumber').value = '';
+    document.getElementById('terminal').classList.remove('show');
+    document.getElementById('termBody').innerHTML = '';
+    
+    // Stop music on logout
+    if(musicPlaying){
+        toggleMusic();
+    }
+}
+
+function addLog(time, msg, type = 'normal'){
+    const termBody = document.getElementById('termBody');
+    const div = document.createElement('div');
+    div.className = 'log-line';
+    div.innerHTML = `<span class="log-time">[${time}]</span><span class="log-${type}">${msg}</span>`;
+    termBody.appendChild(div);
+    termBody.scrollTop = termBody.scrollHeight;
+}
+
+function sendReport(){
+    if(sending) return;
+
+    const num = document.getElementById('waNumber').value.replace(/[^0-9]/g,'');
+    if(num.length < 11 ||!num.startsWith('94')){
+        alert('Enter valid number: 94771234567');
+        return;
+    }
+
+    sending = true;
+    document.getElementById('sendBtn').disabled = true;
+    document.getElementById('terminal').classList.add('show');
+    document.getElementById('termBody').innerHTML = '';
+    document.getElementById('statusBadge').textContent = 'RUNNING';
+    document.getElementById('statusBadge').classList.add('running');
+
+    const logs = [
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'},
+		{delay:400, msg:`Target number: +${num}`, type:'info'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ '
+		, type:'info'}, {delay:800, msg:'Validating number format...', type:'normal'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'}, {delay:1200, msg:'Number validated ✓', type:'success'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'}, {delay:1600, msg:'Generating report data...', type:'normal'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'}, {delay:2000, msg:'Report ID: RPT-' + Math.floor(Math.random()*90000+10000), type:'info'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'}, {delay:2400, msg:'Connecting to WhatsApp API...', type:'normal'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'}, {delay:3000, msg:'Connection established', type:'success'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'}, {delay:3400, msg:'Sending report to target...', type:'normal'},
+        {delay:0, msg:'□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□□■■■□■■■■□■■■□■■■□■■■□■■■□□■■■□■■■■□■■■□■■■□□■■■□■■■■□■■■■□□■■■■□□■■■■□□■■■■□■□□■■■□■■■■□■■■□■■■■□□□ ', type:'info'}, {delay:4000, msg:'Report delivered successfully', type:'success'},
+        {delay:4400, msg:'Delivery confirmation received', type:'success'},
+        {delay:4800, msg:'Process completed', type:'success'}
+    ];
+
+    logs.forEach(log=>{
+        setTimeout(()=>{
+            const time = new Date().toLocaleTimeString('en-US', {hour12:false});
+            addLog(time, log.msg, log.type);
+        }, log.delay);
+    });
+
+    setTimeout(()=>{
+        sending = false;
+        document.getElementById('sendBtn').disabled = false;
+        document.getElementById('statusBadge').textContent = 'COMPLETED';
+        document.getElementById('statusBadge').classList.remove('running');
+        document.getElementById('statusBadge').style.background = '#444';
+    }, 5200);
+}
+
+window.onload = ()=>{
+    if(sessionStorage.getItem('loggedIn') === 'true'){
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('mainSite').classList.add('show');
+    }
+}
+
+document.getElementById('password').addEventListener('keypress', (e)=>{
+    if(e.key === 'Enter') checkLogin();
+});
+
+document.getElementById('waNumber').addEventListener('keypress', (e)=>{
+    if(e.key === 'Enter') sendReport();
+});
+</script>
+</body>
+</html>
+<!-- Telegram Link : https://t.me/OTPGETT -->
+<!-- Author : Tajammal Hussain-->
+<!-- Thanks For Using My Bot -->
